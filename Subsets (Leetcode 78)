@@ -1,0 +1,18 @@
+class Solution {
+    public static void allSubsets(int index,int[] nums,List<Integer> ds,List<List<Integer>> ans){
+        if(index==nums.length){
+            ans.add(new ArrayList(ds));
+            return;
+        }
+        ds.add(nums[index]);
+        allSubsets(index+1,nums,ds,ans);
+        ds.remove(ds.size()-1);
+        allSubsets(index+1,nums,ds,ans);
+        
+    }
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> ans=new ArrayList<>();
+        allSubsets(0,nums,new ArrayList<>(),ans);
+        return ans;
+    }
+}
